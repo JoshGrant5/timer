@@ -3,12 +3,13 @@
 const beeps = process.argv.splice(2);
 
 const timer = beeps => {
-  
+  let index = 0;
   beeps.forEach(num => {
     let converted = Number(num);
     if (Number.isInteger(converted) && converted > 0) {
       setTimeout(() => {
-        process.stdout.write('.'); // instead of outputting a sound
+        index === beeps.length - 1 ? process.stdout.write('.\n') : process.stdout.write('.');
+        index++;
       }, converted * 1000);
     } 
   }); 
